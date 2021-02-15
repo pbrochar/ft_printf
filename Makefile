@@ -9,7 +9,7 @@ all :
 test : re
 		@./a.out
 clean :
-		@rm -rf a./out
+		@rm -rf ./a.out
 
 
 re : clean all
