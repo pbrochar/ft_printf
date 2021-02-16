@@ -1,47 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   xX_convert.c                                       :+:      :+:    :+:   */
+/*   main2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/15 18:51:13 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/15 18:55:01 by pbrochar         ###   ########.fr       */
+/*   Created: 2021/02/16 09:58:27 by pbrochar          #+#    #+#             */
+/*   Updated: 2021/02/16 09:59:28 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_printhex(size_t nb, char *base)
+static void	ft_printhex(int v, int upper)
 {
-	if (nb >= 1)
+	if (v >= 0 && v < 10)
+		ft_putchar_fd('0' + v, 1);
+	else
+		if (upper == 0)
+			ft_putchar_fd('a' + v - 10, 1);
+		else
+			ft_putchar_fd('A' + v - 10, 1);
+}
+
+void	ft_putaddr(void *ptr)
+{
+	size_t 	b;
+	int		i;
+	
+	b = (size_t)ptr;
+	i = (sizeof(b) << 3) - 4;
+	ft_putstr_fd("0x", 1);
+	while (((b >> i) & 0xf) == 0)
+		i -= 4;
+	while (i >= 0)
 	{
-		ft_printhex(nb / 16, base);
-		ft_putchar_fd(base[nb % 16], 1);
+		ft_printhex((b >> i) & 0xf, 0);
+		i -= 4;
 	}
 }
 
-void		ft_puthex(size_t nb, int upper)
+void	ft_puthex(size_t nb, int upper)
 {
-	char *lower_hex;
-	char *upper_hex;
+	int i;
 
-	lower_hex = "0123456789abcdef";
-	upper_hex = "0123456789ABCDEF";
-	if (upper == 0)
-		ft_printhex(nb, lower_hex);
-	else
-		ft_printhex(nb, upper_hex);
+	i = (sizeof(nb) << 3) - 4;
+	while (((nb >> i) & 0xf) == 0)
+		i -= 4;
+	while (i >= 0)
+	{
+		ft_printhex((nb >> i) & 0xf, upper);
+		i -= 4;
+	}
 }
-
-void		ft_putaddr(void *ptr)
-{
-	char	*base;
-	size_t	addr;
-
-	addr = (size_t)ptr;
-	base = "0123456789abcdef";
-	ft_putstr_fd("0x", 1);
-	ft_printhex(addr, base);
-}
-
