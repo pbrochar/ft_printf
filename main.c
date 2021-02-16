@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 15:57:34 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/15 19:47:05 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/16 11:47:03 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 int		main(void)
 {
+/*
 	char	a;
 	char	*ptr;
 	unsigned int b = 10;
@@ -31,5 +32,7 @@ int		main(void)
 	printf("\npct d = %i\n", 10);
 	ft_putnbr_fd(10,1);
 	ft_putprct();
+*/	
+	printf("%");
 	return (0);
 }
