@@ -1,36 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   u_convert.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/21 16:26:40 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/21 17:49:05 by pbrochar         ###   ########.fr       */
+/*   Created: 2021/02/21 17:27:52 by pbrochar          #+#    #+#             */
+/*   Updated: 2021/02/21 17:51:48 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 #include "ft_printf.h"
-
-static void	ft_printunsigned(unsigned int nb, size_t *i)
+void	ft_putnbr_pf(int n, size_t *i)
 {
-	if (nb > 9)
+	unsigned int nbr;
+
+	if (n < 0)
 	{
-		ft_printunsigned(nb / 10, i);
-		ft_putchar_pf((nb % 10) + '0', i);
+		nbr = -n;
+		ft_putchar_pf('-', i);
 	}
 	else
-		ft_putchar_pf((nb % 10) + '0', i);
+		nbr = n;
+	if (nbr > 9)
+	{
+		ft_putnbr_pf(nbr / 10, i);
+		ft_putchar_pf((nbr % 10) + '0', i);
+	}
+	else
+		ft_putchar_pf(nbr + '0', i);
 }
 
-void		ft_putunsigned(s_varg *ftpf)
+void	ft_putchar_pf(char c, size_t *i)
 {
-	unsigned int nb;
-	unsigned int unsign_max;
-   
-	nb = va_arg(*(ftpf->lst), unsigned int);
-	unsign_max = 4294967295;
-	if (nb < 0)
-		nb = nb + unsign_max + 1;
-	ft_printunsigned(nb, &ftpf->len);
+	write(1, &c, 1);
+	(*i)++;
+}
+void	ft_putstr_pf(char *s, size_t *i)
+{
+	int a;
+
+	a = ft_strlen(s);
+	write(1, s, a);
+	(*i) += a;
 }

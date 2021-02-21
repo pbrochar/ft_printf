@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 14:48:42 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/21 15:55:13 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/21 17:53:29 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,26 @@
 
 void	ft_putid(s_varg *ftpf)
 {
-	ft_putnbr_fd(va_arg(*(ftpf->lst), int), 1);
+	ft_putnbr_pf(va_arg(*(ftpf->lst), int), &ftpf->len);
 }
 
-void	ft_putstr_pf(s_varg *ftpf)
+void	ft_putstring(s_varg *ftpf)
 {
-	ft_putstr_fd(va_arg(*(ftpf->lst), char *), 1);
+	if (!(va_arg(*(ftpf->lst), char *)))
+	{
+		ft_putstr_pf("(null)", &ftpf->len);
+		return ;
+	}
+	ft_putstr_pf(va_arg(*(ftpf->lst), char *), &ftpf->len);
 }
 
-void	ft_putchar_pf(s_varg *ftpf)
+void	ft_putcharac(s_varg *ftpf)
 {
-	ft_putchar_fd(va_arg(*(ftpf->lst), int), 1);
+	ft_putchar_pf(va_arg(*(ftpf->lst), int), &ftpf->len);
 }
 
 void	ft_putpct(s_varg *ftpf)
 {
-	(void)ftpf;
-	write(1, "%", 1);
+	ft_putchar_pf('%', &ftpf->len);
 }
 

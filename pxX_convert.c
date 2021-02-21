@@ -6,22 +6,22 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 11:28:10 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/21 15:05:40 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/21 17:54:29 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
 
-static void	ft_printhex(int v, int upper)
+static void	ft_printhex(int v, int upper, size_t *i)
 {
 	if (v >= 0 && v < 10)
-		ft_putchar_fd('0' + v, 1);
+		ft_putchar_pf('0' + v, i);
 	else
 		if (upper == 0)
-			ft_putchar_fd('a' + v - 10, 1);
+			ft_putchar_pf('a' + v - 10, i);
 		else
-			ft_putchar_fd('A' + v - 10, 1);
+			ft_putchar_pf('A' + v - 10, i);
 }
 
 void	ft_putaddr(s_varg *ftpf)
@@ -31,14 +31,19 @@ void	ft_putaddr(s_varg *ftpf)
 	void	*ptr;
 
 	ptr = va_arg(*(ftpf->lst), void *);
+	if (!ptr)
+	{
+		ft_putstr_pf("(nil)", &ftpf->len);
+		return ;
+	}
 	b = (size_t)ptr;
 	i = (sizeof(b) << 3) - 4;
-	ft_putstr_fd("0x", 1);
+	ft_putstr_pf("0x", &ftpf->len);
 	while (((b >> i) & 0xf) == 0)
 		i -= 4;
 	while (i >= 0)
 	{
-		ft_printhex((b >> i) & 0xf, 0);
+		ft_printhex((b >> i) & 0xf, 0, &ftpf->len);
 		i -= 4;
 	}
 }
@@ -54,7 +59,7 @@ void	ft_puthex_min(s_varg *ftpf)
 		i -= 4;
 	while (i >= 0)
 	{
-		ft_printhex((nb >> i) & 0xf, 0);
+		ft_printhex((nb >> i) & 0xf, 0, &ftpf->len);
 		i -= 4;
 	}
 }
@@ -70,7 +75,7 @@ void	ft_puthex_maj(s_varg *ftpf)
 		i -= 4;
 	while (i >= 0)
 	{
-		ft_printhex((nb >> i) & 0xf, 1);
+		ft_printhex((nb >> i) & 0xf, 1, &ftpf->len);
 		i -= 4;
 	}
 
