@@ -1,4 +1,4 @@
-SRC = main.c ft_printf.c
+SRC = main.c pf_init_struct.c parser.c ft_put_param.c utils.c ft_printf.c
 LIB = libft.a
 FLAGS = -Wall -Wextra -Werror
 CC = clang

@@ -6,14 +6,14 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 11:41:22 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/21 19:53:43 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/23 16:06:25 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
 
-int	 ft_parser(char c)
+int	 pf_istype(char c)
 {
 	int i;
 	char *type;
@@ -29,7 +29,7 @@ int	 ft_parser(char c)
 	return (-1);
 }
 
-int ft_parser_flag(char c)
+int pf_isflag(char c)
 {
 	int i;
 	char *flag;

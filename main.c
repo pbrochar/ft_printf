@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 15:26:26 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/23 15:27:06 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/23 17:10:20 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 int main(void)
 {
-	ft_printf("coucou");
+	ft_printf("coucou",5, 10);
 	return (0);
 }
