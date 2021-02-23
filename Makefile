@@ -1,4 +1,4 @@
-SRC = main.c utils.c ft_printf.c u_convert.c pxX_convert.c idsc_convert.c parser.c
+SRC = main.c ft_printf.c
 LIB = libft.a
 FLAGS = -Wall -Wextra -Werror
 CC = clang
