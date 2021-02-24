@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 17:00:30 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/23 17:09:51 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/24 14:52:55 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,12 @@ void	init_s_varg(s_varg *ftpf, const char *format, va_list *parameters)
 
 void	init_s_flags(s_flags *flags)
 {
-	flags->is_zero = 0;
-	flags->is_dash = 0;
-	flags->nb_zd = 0;
-	flags->nb_space = 0;
-	flags->precision = 0;
-	flags->len = 0;
-	flags->eq_type = 0;
+	flags->nb_zero = -1;
+	flags->nb_dash = -1;
+	flags->nb_space = -1;
+	flags->precision = -1;
+	flags->len = -1;
+	flags->eq_type = -1;
 	flags->type = '\0';
 }
 

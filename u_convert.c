@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   u_convert.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/23 15:26:26 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/24 15:49:30 by pbrochar         ###   ########.fr       */
+/*   Created: 2021/02/21 16:26:40 by pbrochar          #+#    #+#             */
+/*   Updated: 2021/02/21 17:49:05 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 #include "ft_printf.h"
 
-int main(void)
+static void	ft_printunsigned(unsigned int nb, size_t *i)
 {
-	int a;
-	a = 0;
-	ft_printf("%p\n", &a);
-	printf("%-d", 10);
-	return (0);
+	if (nb > 9)
+	{
+		ft_printunsigned(nb / 10, i);
+		ft_putchar_pf((nb % 10) + '0', i);
+	}
+	else
+		ft_putchar_pf((nb % 10) + '0', i);
+}
+
+void		ft_putunsigned(s_varg *ftpf)
+{
+	unsigned int nb;
+	unsigned int unsign_max;
+   
+	nb = va_arg(*(ftpf->lst), unsigned int);
+	unsign_max = 4294967295;
+	if (nb < 0)
+		nb = nb + unsign_max + 1;
+	ft_printunsigned(nb, &ftpf->len);
 }

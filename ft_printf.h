@@ -14,9 +14,8 @@ typedef struct 	t_varg
 
 typedef struct	t_flags
 {
-	int		is_zero;
-	int		is_dash;
-	int		nb_zd;
+	int		nb_zero;
+	int		nb_dash;
 	int		nb_space;
 	int		precision;
 	int		len;
@@ -38,7 +37,8 @@ void	init_s_varg(s_varg *ftpf, const char *format, va_list *parameters);
 void	init_s_flags(s_flags *flags);
 int		pf_istype(char c);
 int		pf_isflag(char c);
-
+int		nb_len_addr(s_varg *ftpf);
+int		nb_len_unsigned(unsigned int nb);
 int		ft_printf(const char *format, ...);
 void	ft_putnbr_pf(int n, size_t *i);
 void	ft_putchar_pf(char c, size_t *i);
