@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pxX_convert.c                                      :+:      :+:    :+:   */
+/*   px_convert.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 11:28:10 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/24 16:12:44 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/24 20:39:36 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,17 @@ static void	ft_printhex(int v, int upper, size_t *i)
 	if (v >= 0 && v < 10)
 		ft_putchar_pf('0' + v, i);
 	else
+	{
 		if (upper == 0)
 			ft_putchar_pf('a' + v - 10, i);
 		else
 			ft_putchar_pf('A' + v - 10, i);
+	}
 }
 
-void	ft_putaddr(s_varg *ftpf)
+void		ft_putaddr(s_varg *ftpf)
 {
-	size_t 	b;
+	size_t	b;
 	int		i;
 	void	*ptr;
 
@@ -48,7 +50,7 @@ void	ft_putaddr(s_varg *ftpf)
 	}
 }
 
-void	ft_puthex_min(s_varg *ftpf)
+void		ft_puthex_min(s_varg *ftpf)
 {
 	int i;
 	int nb;
@@ -64,7 +66,7 @@ void	ft_puthex_min(s_varg *ftpf)
 	}
 }
 
-void	ft_puthex_maj(s_varg *ftpf)
+void		ft_puthex_maj(s_varg *ftpf)
 {
 	int i;
 	int nb;
@@ -78,5 +80,4 @@ void	ft_puthex_maj(s_varg *ftpf)
 		ft_printhex((nb >> i) & 0xf, 1, &ftpf->nb_print);
 		i -= 4;
 	}
-
 }

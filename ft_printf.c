@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 15:16:06 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/23 17:10:08 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/24 20:23:57 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int			ft_printf(const char *format, ...)
 {
 	va_list parameters;
 	s_varg	ftpf;
-	
+
 	va_start(parameters, format);
 	init_s_varg(&ftpf, format, &parameters);
 	while (format[ftpf.pos] != '\0')

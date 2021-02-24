@@ -6,13 +6,14 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 15:58:51 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/24 20:19:51 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/24 20:32:47 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
-static int check_flags(s_flags *flags)
+
+static int		check_flags(s_flags *flags)
 {
 	if (flags->nb_zero > -1)
 		return (1);
@@ -24,7 +25,7 @@ static int check_flags(s_flags *flags)
 		return (0);
 }
 
-static void len_count(s_varg *ftpf, s_flags *flags)
+static void		len_count(s_varg *ftpf, s_flags *flags)
 {
 	va_list cpy;
 
@@ -42,11 +43,13 @@ static void len_count(s_varg *ftpf, s_flags *flags)
 	else
 		flags->len = 1;
 }
-void	print_flags(s_varg *ftpf, s_flags *flags)
+
+void			print_flags(s_varg *ftpf, s_flags *flags)
 {
 	int		tab_flag;
-	void (*fct_flags[4])(s_varg *, s_flags *) = {&print_arg, &pf_print_zero, &pf_print_space, &pf_print_dash};
-	
+	void	(*fct_flags[4])(s_varg *, s_flags *) =
+	{&print_arg, &pf_print_zero, &pf_print_space, &pf_print_dash};
+
 	len_count(ftpf, flags);
 	tab_flag = check_flags(flags);
 	if (tab_flag == 0)
@@ -54,10 +57,13 @@ void	print_flags(s_varg *ftpf, s_flags *flags)
 	fct_flags[tab_flag](ftpf, flags);
 	ftpf->indicator = -1;
 }
-void	print_arg(s_varg *ftpf, s_flags *flags)
+
+void			print_arg(s_varg *ftpf, s_flags *flags)
 {
-	void (*fct_param[9])(s_varg *) = {&ft_puthex_min, &ft_puthex_maj, &ft_putaddr, &ft_putid, &ft_putid, &ft_putstring, &ft_putcharac, &ft_putpct, &ft_putunsigned};
+	void (*fct_param[9])(s_varg *) =
+	{&ft_puthex_min, &ft_puthex_maj, &ft_putaddr,
+		&ft_putid, &ft_putid, &ft_putstring,
+		&ft_putcharac, &ft_putpct, &ft_putunsigned};
 
 	fct_param[flags->eq_type](ftpf);
 }
-

@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 14:48:42 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/24 20:07:08 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/24 20:26:18 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	ft_putid(s_varg *ftpf)
 
 void	ft_putstring(s_varg *ftpf)
 {
-	va_list cpy;
-	char *str;
-	int i;
+	va_list	cpy;
+	char	*str;
+	int		i;
 
 	i = 0;
 	va_copy(cpy, *(ftpf->lst));
@@ -50,4 +50,3 @@ void	ft_putpct(s_varg *ftpf)
 {
 	ft_putchar_pf('%', &ftpf->nb_print);
 }
-

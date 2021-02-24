@@ -6,14 +6,14 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 15:45:54 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/24 19:28:18 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/24 20:25:22 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
 
-static int	count_flags(s_varg *ftpf)
+static int		count_flags(s_varg *ftpf)
 {
 	int nb;
 
@@ -32,13 +32,14 @@ static int	count_flags(s_varg *ftpf)
 	return (nb);
 }
 
-static void	init_param(s_varg *ftpf, s_flags *flags)
+static void		init_param(s_varg *ftpf, s_flags *flags)
 {
 	if (ftpf->str[ftpf->pos] == '0')
 		flags->nb_zero = count_flags(ftpf);
 	else if (ftpf->str[ftpf->pos] == '-')
 		flags->nb_dash = count_flags(ftpf);
-	else if (ftpf->str[ftpf->pos] != '.' && pf_istype(ftpf->str[ftpf->pos]) == -1)
+	else if (ftpf->str[ftpf->pos] != '.'
+			&& pf_istype(ftpf->str[ftpf->pos]) == -1)
 	{
 		(ftpf->pos)--;
 		flags->nb_space = count_flags(ftpf);
@@ -49,7 +50,7 @@ static void	init_param(s_varg *ftpf, s_flags *flags)
 	flags->type = ftpf->str[ftpf->pos];
 }
 
-void	ft_put_param(s_varg *ftpf)
+void			ft_put_param(s_varg *ftpf)
 {
 	s_flags	flags;
 
@@ -57,12 +58,4 @@ void	ft_put_param(s_varg *ftpf)
 	ftpf->pos++;
 	init_param(ftpf, &flags);
 	print_flags(ftpf, &flags);
-/*
-	printf("nb_zero : %d\n", flags.nb_zero);
-	printf("nb_dash : %d\n", flags.nb_dash);
-	printf("nb_space : %d\n", flags.nb_space);
-	printf("precision: %d\n", flags.precision);
-	printf("len : %d\n", flags.len);
-	printf("eq_type : %d\n" , flags.eq_type);
-	printf("type : %c\n", flags.type);*/
 }

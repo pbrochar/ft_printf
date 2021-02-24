@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 17:00:30 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/24 19:30:56 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/24 20:27:52 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,3 @@ void	init_s_flags(s_flags *flags)
 	flags->eq_type = -1;
 	flags->type = '\0';
 }
-
