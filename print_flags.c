@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 17:06:08 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/24 18:04:59 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/24 18:39:26 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,3 +30,32 @@ void pf_print_zero(s_varg *ftpf, s_flags *flags)
 		ft_putchar_pf('0', &ftpf->nb_print);
 	print_arg(ftpf, flags);
 }
+
+void pf_print_space(s_varg *ftpf, s_flags *flags)
+{
+	int total;
+	va_list cpy;
+
+	va_copy(cpy, *(ftpf->lst));
+	total = (flags->nb_space) - (flags->len);
+	if (va_arg(cpy, int) < 0 && (flags->type == 'd' || flags->type == 'i'))
+		total--;
+	while (total-- > 0)
+		ft_putchar_pf(' ', &ftpf->nb_print);
+	print_arg(ftpf, flags);
+}
+
+void pf_print_dash(s_varg *ftpf, s_flags *flags)
+{
+	int 	total;
+	va_list cpy;
+
+	va_copy(cpy, *(ftpf->lst));
+	total = (flags->nb_dash) - (flags->len);
+	if (va_arg(cpy, int) < 0 && (flags->type == 'd' || flags->type == 'i'))
+		total--;
+	print_arg(ftpf, flags);
+	while (total-- > 0)
+		ft_putchar_pf(' ', &ftpf->nb_print);
+}
+

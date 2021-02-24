@@ -42,7 +42,11 @@ int		nb_len_addr(s_varg *ftpf);
 int		nb_len_unsigned(unsigned int nb);
 void	print_arg(s_varg *ftpf, s_flags *flags);
 void	print_flags(s_varg *ftpf, s_flags *flags);
+
 void	pf_print_zero(s_varg *ftpf, s_flags *flags);
+void	pf_print_space(s_varg *ftpf, s_flags *flags);
+void	pf_print_dash(s_varg *ftpf, s_flags *flags);
+
 int		ft_printf(const char *format, ...);
 void	ft_putnbr_pf(int n, size_t *i, int indicator);
 void	ft_putchar_pf(char c, size_t *i);
