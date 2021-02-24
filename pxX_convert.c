@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 11:28:10 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/21 17:54:29 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/24 16:12:44 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,17 @@ void	ft_putaddr(s_varg *ftpf)
 	ptr = va_arg(*(ftpf->lst), void *);
 	if (!ptr)
 	{
-		ft_putstr_pf("(nil)", &ftpf->len);
+		ft_putstr_pf("(nil)", &ftpf->nb_print);
 		return ;
 	}
 	b = (size_t)ptr;
 	i = (sizeof(b) << 3) - 4;
-	ft_putstr_pf("0x", &ftpf->len);
+	ft_putstr_pf("0x", &ftpf->nb_print);
 	while (((b >> i) & 0xf) == 0)
 		i -= 4;
 	while (i >= 0)
 	{
-		ft_printhex((b >> i) & 0xf, 0, &ftpf->len);
+		ft_printhex((b >> i) & 0xf, 0, &ftpf->nb_print);
 		i -= 4;
 	}
 }
@@ -59,7 +59,7 @@ void	ft_puthex_min(s_varg *ftpf)
 		i -= 4;
 	while (i >= 0)
 	{
-		ft_printhex((nb >> i) & 0xf, 0, &ftpf->len);
+		ft_printhex((nb >> i) & 0xf, 0, &ftpf->nb_print);
 		i -= 4;
 	}
 }
@@ -75,7 +75,7 @@ void	ft_puthex_maj(s_varg *ftpf)
 		i -= 4;
 	while (i >= 0)
 	{
-		ft_printhex((nb >> i) & 0xf, 1, &ftpf->len);
+		ft_printhex((nb >> i) & 0xf, 1, &ftpf->nb_print);
 		i -= 4;
 	}
 

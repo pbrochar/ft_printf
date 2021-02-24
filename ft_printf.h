@@ -39,6 +39,7 @@ int		pf_istype(char c);
 int		pf_isflag(char c);
 int		nb_len_addr(s_varg *ftpf);
 int		nb_len_unsigned(unsigned int nb);
+void	print_arg(s_varg *ftpf, s_flags *flags);
 int		ft_printf(const char *format, ...);
 void	ft_putnbr_pf(int n, size_t *i);
 void	ft_putchar_pf(char c, size_t *i);

@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 17:27:52 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/24 15:56:58 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/24 16:16:05 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -102,9 +102,10 @@ int nb_len_unsigned(unsigned int nb)
 	int 			i;
 
 	unsign_max = 4294967295;
+	i = 0;
 	if (nb < 0)
 		nb = nb + unsign_max + 1;
-	while (n > 0)
+	while (nb > 0)
 	{
 		nb /= 10;
 		i++;

@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 15:45:54 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/24 15:41:17 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/24 16:37:04 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	init_param(s_varg *ftpf, s_flags *flags)
 		flags->nb_zero = count_flags(ftpf);
 	else if (ftpf->str[ftpf->pos] == '-')
 		flags->nb_dash = count_flags(ftpf);
-	else if (ftpf->str[ftpf->pos] != '.' && !(pf_istype(ftpf->str[ftpf->pos])))
+	else if (ftpf->str[ftpf->pos] != '.' && pf_istype(ftpf->str[ftpf->pos]) == -1)
 		flags->nb_space = count_flags(ftpf);
 	if (ftpf->str[ftpf->pos] == '.')
 		flags->precision = count_flags(ftpf);
@@ -53,6 +53,7 @@ void	ft_put_param(s_varg *ftpf)
 	init_s_flags(&flags);
 	ftpf->pos++;
 	init_param(ftpf, &flags);
+/*
 	printf("nb_zero : %d\n", flags.nb_zero);
 	printf("nb_dash : %d\n", flags.nb_dash);
 	printf("nb_space : %d\n", flags.nb_space);
@@ -60,5 +61,6 @@ void	ft_put_param(s_varg *ftpf)
 	printf("len : %d\n", flags.len);
 	printf("eq_type : %d\n" , flags.eq_type);
 	printf("type : %c\n", flags.type);
-	printf("len pointer : %d\n", nb_len_addr(ftpf));
+	printf("len pointer : %d\n", nb_len_addr(ftpf));*/
+	print_arg(ftpf, &flags);
 }

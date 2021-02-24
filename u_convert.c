@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 16:26:40 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/21 17:49:05 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/24 16:13:07 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -32,5 +32,5 @@ void		ft_putunsigned(s_varg *ftpf)
 	unsign_max = 4294967295;
 	if (nb < 0)
 		nb = nb + unsign_max + 1;
-	ft_printunsigned(nb, &ftpf->len);
+	ft_printunsigned(nb, &ftpf->nb_print);
 }
