@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 15:45:54 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/24 16:37:04 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/24 17:16:12 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,5 @@ void	ft_put_param(s_varg *ftpf)
 	printf("eq_type : %d\n" , flags.eq_type);
 	printf("type : %c\n", flags.type);
 	printf("len pointer : %d\n", nb_len_addr(ftpf));*/
-	print_arg(ftpf, &flags);
+	print_flags(ftpf, &flags);
 }

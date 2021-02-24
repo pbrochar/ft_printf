@@ -6,26 +6,27 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 17:27:52 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/24 16:56:24 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/24 18:10:40 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 #include "ft_printf.h"
 
-void	ft_putnbr_pf(int n, size_t *i)
+void	ft_putnbr_pf(int n, size_t *i, int indicator)
 {
 	unsigned int nbr;
 
 	if (n < 0)
 	{
 		nbr = -n;
-		ft_putchar_pf('-', i);
+		if (indicator == -1)
+			ft_putchar_pf('-', i);
 	}
 	else
 		nbr = n;
 	if (nbr > 9)
 	{
-		ft_putnbr_pf(nbr / 10, i);
+		ft_putnbr_pf(nbr / 10, i, -1);
 		ft_putchar_pf((nbr % 10) + '0', i);
 	}
 	else
@@ -66,20 +67,19 @@ int nb_len_dec(int n)
 
 int nb_len_hex(int n)
 {
-	unsigned int nb;
 	int i;
+	int count;
 
-	i = 0;
-	if (n < 0)
-		nb = -n;
-	else
-		nb = n;
-	while (nb > 0)
+	count = 0;
+	i = (sizeof(n) << 3) - 4;
+	while (((n >> i) & 0xf) == 0)
+		i -= 4;
+	while (i >= 0)
 	{
-		nb /= 16;
-		i++;
+		count++;
+		i -= 4;
 	}
-	return (i);
+	return (count);
 }
 
 int	nb_len_addr(s_varg *ftpf)

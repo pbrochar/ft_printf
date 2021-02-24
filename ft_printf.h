@@ -10,6 +10,7 @@ typedef struct 	t_varg
 	int			pos;
 	va_list		*lst;
 	size_t		nb_print;
+	int			indicator;
 }				s_varg;
 
 typedef struct	t_flags
@@ -40,8 +41,10 @@ int		pf_isflag(char c);
 int		nb_len_addr(s_varg *ftpf);
 int		nb_len_unsigned(unsigned int nb);
 void	print_arg(s_varg *ftpf, s_flags *flags);
+void	print_flags(s_varg *ftpf, s_flags *flags);
+void	pf_print_zero(s_varg *ftpf, s_flags *flags);
 int		ft_printf(const char *format, ...);
-void	ft_putnbr_pf(int n, size_t *i);
+void	ft_putnbr_pf(int n, size_t *i, int indicator);
 void	ft_putchar_pf(char c, size_t *i);
 void	ft_putstr_pf(char *s, size_t *i);
 void	ft_put_param(s_varg *ftpf);

@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_init_struct.c                                   :+:      :+:    :+:   */
+/*   print_flags.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/23 17:00:30 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/24 17:55:05 by pbrochar         ###   ########.fr       */
+/*   Created: 2021/02/24 17:06:08 by pbrochar          #+#    #+#             */
+/*   Updated: 2021/02/24 18:04:59 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
 
-void	init_s_varg(s_varg *ftpf, const char *format, va_list *parameters)
+void pf_print_zero(s_varg *ftpf, s_flags *flags)
 {
-	ftpf->str = format;
-	ftpf->pos = 0;
-	ftpf->lst = parameters;
-	ftpf->nb_print = 0;
-	ftpf->indicator = -1;
-}
+	int total;
+	va_list cpy;
 
-void	init_s_flags(s_flags *flags)
-{
-	flags->nb_zero = -1;
-	flags->nb_dash = -1;
-	flags->nb_space = -1;
-	flags->precision = -1;
-	flags->len = -1;
-	flags->eq_type = -1;
-	flags->type = '\0';
+	va_copy(cpy, *(ftpf->lst));
+	total = (flags->nb_zero) - (flags->len);
+	if (va_arg(cpy, int) < 0 && (flags->type == 'd' || flags->type == 'i'))
+	{
+		ft_putchar_pf('-', &ftpf->nb_print);
+		ftpf->indicator = 0;
+		total--;
+	}
+	while (total-- > 0)
+		ft_putchar_pf('0', &ftpf->nb_print);
+	print_arg(ftpf, flags);
 }
-

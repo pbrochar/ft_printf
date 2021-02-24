@@ -6,13 +6,13 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 15:58:51 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/24 16:54:01 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/24 18:02:54 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
-static int check_struct(s_flags *flags)
+static int check_flags(s_flags *flags)
 {
 	if (flags->nb_zero > -1)
 		return (1);
@@ -42,16 +42,19 @@ static void len_count(s_varg *ftpf, s_flags *flags)
 	else
 		flags->len = 1;
 }
+void	print_flags(s_varg *ftpf, s_flags *flags)
+{
+	void (*fct_flags[2])(s_varg *, s_flags *) = {&print_arg, &pf_print_zero};
+	len_count(ftpf, flags);
+	fct_flags[check_flags(flags)](ftpf, flags);
 
+
+	ftpf->indicator = -1;
+}
 void	print_arg(s_varg *ftpf, s_flags *flags)
 {
 	void (*fct_param[9])(s_varg *) = {&ft_puthex_min, &ft_puthex_maj, &ft_putaddr, &ft_putid, &ft_putid, &ft_putstring, &ft_putcharac, &ft_putpct, &ft_putunsigned};
 
-	if (check_struct(flags) == 0)
-	{
-		fct_param[flags->eq_type](ftpf);
-		return ;
-	}
-	len_count(ftpf, flags);
-	printf("len = %d\n", flags->len);
-} 
+	fct_param[flags->eq_type](ftpf);
+}
+
