@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 17:27:52 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/24 16:16:05 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/24 16:56:24 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -48,12 +48,17 @@ void	ft_putstr_pf(char *s, size_t *i)
 
 int nb_len_dec(int n)
 {
-	int i;
+	unsigned int 	nb;
+	int 			i;
 
 	i = 0;
-	while (n > 0)
+	if (n < 0)
+		nb = -n;
+	else
+		nb = n;
+	while (nb > 0)
 	{
-		n /= 10;
+		nb /= 10;
 		i++;
 	}
 	return (i);
@@ -61,12 +66,17 @@ int nb_len_dec(int n)
 
 int nb_len_hex(int n)
 {
+	unsigned int nb;
 	int i;
 
 	i = 0;
-	while (n > 0)
+	if (n < 0)
+		nb = -n;
+	else
+		nb = n;
+	while (nb > 0)
 	{
-		n /= 16;
+		nb /= 16;
 		i++;
 	}
 	return (i);
