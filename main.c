@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 15:26:26 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/24 18:47:37 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/24 20:22:49 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int main(void)
 {
 	int a;
 	a = 0;
-	ft_printf("|%%|\n");
-	printf("|%%|\n");
+	ft_printf("|%30.*s|\n", 5, "coucou je suis paul");
+	printf("|%30.*s|\n", 5, "coucou je suis paul");
+	printf("|%30.*s|\n", 5, "coucou je suis paul");
 	return (0);
 }

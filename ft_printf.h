@@ -46,6 +46,7 @@ void	print_flags(s_varg *ftpf, s_flags *flags);
 void	pf_print_zero(s_varg *ftpf, s_flags *flags);
 void	pf_print_space(s_varg *ftpf, s_flags *flags);
 void	pf_print_dash(s_varg *ftpf, s_flags *flags);
+void	pf_print_precision(s_varg *ftpf, s_flags *flags);
 
 int		ft_printf(const char *format, ...);
 void	ft_putnbr_pf(int n, size_t *i, int indicator);
