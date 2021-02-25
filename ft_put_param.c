@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 15:45:54 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 18:59:45 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 19:21:28 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,11 @@ int		count_flags(s_varg *ftpf)
 	}
 	while (ftpf->str[ftpf->pos] == '0')
 		ftpf->pos++;
-	if (ft_isdigit(ftpf->str[ftpf->pos]))
+	if (ft_isdigit(ftpf->str[ftpf->pos]) || ftpf->str[ftpf->pos] == '-')
 	{
 		nb = ft_atoi(&(ftpf->str[ftpf->pos]));
-		ftpf->pos += nb_len_dec(nb);
+		while (ftpf->str[ftpf->pos] == '-' || ft_isdigit(ftpf->str[ftpf->pos]))
+			ftpf->pos++;
 		return (nb);
 	}
 	return (0);
@@ -38,24 +39,18 @@ int		count_flags(s_varg *ftpf)
 
 static void		init_param(s_varg *ftpf, s_flags *flags)
 {
+	int nb;
+
 	if (ftpf->str[ftpf->pos] == '0')
 		flags->nb_zero = count_flags(ftpf);
-	else if (ftpf->str[ftpf->pos] == '-')
-	{
-		while (ftpf->str[ftpf->pos] == '-')
-			ftpf->pos++;
-		flags->nb_dash = count_flags(ftpf);
-	}
-	else if (ftpf->str[ftpf->pos] != '.'
-			&& pf_istype(ftpf->str[ftpf->pos]) == -1)
+	else if (ftpf->str[ftpf->pos] == '-' || ft_isdigit(ftpf->str[ftpf->pos]))
 	{
 		(ftpf->pos)--;
-		flags->nb_space = count_flags(ftpf);
-		if (flags->nb_space < 0)
-		{
-			flags->nb_dash = (flags->nb_space) * -1;
-			flags->nb_space = -1;
-		}
+		nb = count_flags(ftpf);
+		if (nb < 0)
+			flags->nb_dash = nb * -1;
+		else
+			flags->nb_space = nb;
 	}
 	if (ftpf->str[ftpf->pos] == '.')
 		flags->precision = count_flags(ftpf);

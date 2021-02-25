@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 15:26:26 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 18:33:40 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 19:25:37 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int main(void)
 {
 
 
-	printf("print pf: %d\n", printf("t3 %50.0d\n", 10));
-	printf("print ft: %d\n", ft_printf("t3 %50.0d\n", 10));
+	printf("print pf: %d\n", printf("|%-5%|\n"));
+	printf("print ft: %d\n", ft_printf("|%-5%|\n"));
 //	printf("%s\n", NULL);
 
 	return (0);
