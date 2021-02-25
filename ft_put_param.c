@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 15:45:54 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 21:30:29 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 21:39:51 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int		count_flags(s_varg *ftpf)
 	if (ftpf->str[ftpf->pos] == '*')
 	{
 		nb = va_arg(*(ftpf->lst), int);
+		if (nb < 0)
+			nb *= -1;
 		ftpf->pos++;
 		return (nb);
 	}
@@ -38,6 +40,8 @@ int		count_flags(s_varg *ftpf)
 	if (ft_isdigit(ftpf->str[ftpf->pos]))
 	{
 		nb = ft_atoi(&(ftpf->str[ftpf->pos]));
+		if (nb < 0)
+			nb *= -1;
 		while (ft_isdigit(ftpf->str[ftpf->pos]))
 			ftpf->pos++;
 		return (nb);
@@ -87,7 +91,7 @@ void			ft_put_param(s_varg *ftpf)
 	printf("zero = %d\n", flags.nb_zero);
 	printf("dash = %d\n", flags.nb_dash);
 	printf("space = %d\n", flags.nb_space);
-	printf("precision = %d\n", flags.precision);
-	printf("type = %c\n", flags.type);*/
+//	printf("precision = %d\n", flags.precision);
+//	printf("type = %c\n", flags.type);*/
 	print_flags(ftpf, &flags);
 }
