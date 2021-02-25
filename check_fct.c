@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:50:43 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 18:19:25 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 18:21:45 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 static int check_format(s_varg *ftpf)
 {
 	(ftpf->pos)++;
-	if (ftpf->str[ftpf->pos] == '-' && ftpf->str[ftpf->pos + 1] == '0')
-		return (-1);
 	if (ft_strchr("0-.", ftpf->str[ftpf->pos]) && count_flags(ftpf) < 0)
 		return (-1);
 	else if (ftpf->str[ftpf->pos] != '.' && pf_istype(ftpf->str[ftpf->pos]) == -1)
