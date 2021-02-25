@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 17:06:08 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 20:05:00 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 20:07:05 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ void		pf_print_zero(s_varg *ftpf, s_flags *flags)
 	va_list cpy;
 	va_copy(cpy, *(ftpf->lst));
 	total = (flags->nb_zero) - (flags->len);
-/*	if (flags->precision > -1)
+	if (flags->precision > -1 && flags->type != '%')
 	{
 		flags->nb_space = flags->nb_zero;
 		pf_print_space(ftpf, flags);
 		return ;
-	}*/
+	}
 	if (va_arg(cpy, int) < 0 && (flags->type == 'd' || flags->type == 'i'))
 	{
 		ft_putchar_pf('-', &ftpf->nb_print);
