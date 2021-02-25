@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 15:45:54 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 21:12:41 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 21:16:15 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,10 @@ static void		init_param(s_varg *ftpf, s_flags *flags)
 	if (ftpf->str[ftpf->pos] == '0')
 		flags->nb_zero = count_flags(ftpf);
 	else if (ftpf->str[ftpf->pos] == '-')
+	{
+		ftpf->pos++;
 		flags->nb_dash = count_flags(ftpf);
+	}
 	else if (ftpf->str[ftpf->pos] != '.' && (pf_istype(ftpf->str[ftpf->pos]) == -1))
 	{
 		nb = count_flags(ftpf);
@@ -77,8 +80,8 @@ void			ft_put_param(s_varg *ftpf)
 	init_s_flags(&flags);
 	ftpf->pos++;
 	init_param(ftpf, &flags);
-
-/*	printf("zero = %d\n", flags.nb_zero);
+/*
+	printf("zero = %d\n", flags.nb_zero);
 	printf("dash = %d\n", flags.nb_dash);
 	printf("space = %d\n", flags.nb_space);
 	printf("precision = %d\n", flags.precision);
