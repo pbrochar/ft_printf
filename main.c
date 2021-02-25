@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 15:26:26 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 18:02:34 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 18:10:25 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int main(void)
 {
 
 
-	printf("this is %x number\n", 17);
-	ft_printf("this is %x number \n", 17);
+	printf("|%.0%|\n");
+	ft_printf("|%05%|\n");
 //	printf("%s\n", NULL);
 
 	return (0);

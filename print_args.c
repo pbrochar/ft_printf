@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 15:58:51 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 15:35:54 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 18:11:18 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,14 @@ void			print_flags(s_varg *ftpf, s_flags *flags)
 	void	(*fct_flags[4])(s_varg *, s_flags *) =
 	{&print_arg, &pf_print_zero, &pf_print_space, &pf_print_dash};
 
+	if (flags->type == '%')
+	{
+		fct_flags[0](ftpf, flags);
+		return ;
+	}
 	len_count(ftpf, flags);
 	tab_flag = check_flags(flags);
-	if (tab_flag == 0 && flags->type != 'c')
+	if (tab_flag == 0 && flags->type != 'c' && flags->type != '%')
 		pf_print_precision(ftpf, flags);
 	fct_flags[tab_flag](ftpf, flags);
 	ftpf->indicator = -1;
