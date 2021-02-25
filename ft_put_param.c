@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 15:45:54 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 20:43:33 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 21:01:54 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int		count_flags(s_varg *ftpf)
 	int nb;
 
 	nb = 0;
-	ftpf->pos++;
 	if (ftpf->str[ftpf->pos] == '*')
 	{
 		nb = va_arg(*(ftpf->lst), int);
@@ -27,12 +26,19 @@ int		count_flags(s_varg *ftpf)
 	}
 	while (ftpf->str[ftpf->pos] == '0')
 		ftpf->pos++;
-	if (ft_isdigit(ftpf->str[ftpf->pos]) || ftpf->str[ftpf->pos] == '-')
+	if (ftpf->str[ftpf->pos] == '-')
 	{
-		while (ftpf->str[ftpf->pos + 1] == '-')
+		while (ftpf->str[ftpf->pos] == '-')
 			ftpf->pos++;
 		nb = ft_atoi(&(ftpf->str[ftpf->pos]));
 		while (ftpf->str[ftpf->pos] == '-' || ft_isdigit(ftpf->str[ftpf->pos]))
+			ftpf->pos++;
+		return (nb);
+	}
+	else if (ft_isdigit(ftpf->str[ftpf->pos]))
+	{
+		nb = ft_atoi(&(ftpf->str[ftpf->pos]));
+		while (ft_isdigit(ftpf->str[ftpf->pos]))
 			ftpf->pos++;
 		return (nb);
 	}
@@ -45,12 +51,13 @@ static void		init_param(s_varg *ftpf, s_flags *flags)
 
 	if (ftpf->str[ftpf->pos] == '0')
 		flags->nb_zero = count_flags(ftpf);
-	else if (ft_strchr("-*", ftpf->str[ftpf->pos]) || ft_isdigit(ftpf->str[ftpf->pos]))
+	else if (ftpf->str[ftpf->pos] == '-')
+		flags->nb_dash = count_flags(ftpf);
+	else if (ft_isdigit(ftpf->str[ftpf->pos]) || ftpf->str[ftpf->pos] == '*')
 	{
-		(ftpf->pos)--;
 		nb = count_flags(ftpf);
 		if (nb < 0)
-			flags->nb_dash = nb * -1;
+			flags->nb_dash = -nb;
 		else
 			flags->nb_space = nb;
 	}
