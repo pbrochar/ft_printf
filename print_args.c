@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 15:58:51 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 18:57:00 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 19:59:32 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,12 @@ static void		len_count(s_varg *ftpf, s_flags *flags)
 	else if (flags->type == 'u')
 		flags->len = nb_len_unsigned(va_arg(cpy, unsigned int));
 	else if (flags->type == 'p')
-		flags->len = nb_len_addr(va_arg(cpy, void *));
+	{
+		if (flags->precision != 0)
+			flags->len = nb_len_addr(va_arg(cpy, void *));
+		else
+			flags->len = 2;
+	}
 	else if (flags->type == 's')
 		flags->len = nb_len_str(va_arg(cpy, void *));
 	else

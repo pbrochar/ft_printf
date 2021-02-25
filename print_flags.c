@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 17:06:08 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 19:39:02 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 19:55:26 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,4 +110,6 @@ void		pf_print_precision(s_varg *ftpf, s_flags *flags)
 	}
 	else if (flags->type == 's' && (flags->precision <= flags->len))
 		ftpf->indicator = flags->precision;
+	else if (flags->type == 'p' && flags->precision == 0)
+		ftpf->indicator = -2;
 }
