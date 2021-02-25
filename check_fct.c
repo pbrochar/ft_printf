@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:50:43 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 17:25:15 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 18:02:21 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int check_format(s_varg *ftpf)
 	}
 	if (ftpf->str[ftpf->pos] == '.' && count_flags(ftpf) < 0)
 		return (-1);
-	if (!(pf_istype(ftpf->str[ftpf->pos])))
+	if (pf_istype(ftpf->str[ftpf->pos]) == -1)
 		return (-1);
 	return (0);
 }
