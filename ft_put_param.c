@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 15:45:54 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 21:39:51 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 21:41:25 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ int		count_flags(s_varg *ftpf)
 	if (ftpf->str[ftpf->pos] == '*')
 	{
 		nb = va_arg(*(ftpf->lst), int);
-		if (nb < 0)
-			nb *= -1;
 		ftpf->pos++;
 		return (nb);
 	}
@@ -40,8 +38,6 @@ int		count_flags(s_varg *ftpf)
 	if (ft_isdigit(ftpf->str[ftpf->pos]))
 	{
 		nb = ft_atoi(&(ftpf->str[ftpf->pos]));
-		if (nb < 0)
-			nb *= -1;
 		while (ft_isdigit(ftpf->str[ftpf->pos]))
 			ftpf->pos++;
 		return (nb);
@@ -61,7 +57,10 @@ static void		init_param(s_varg *ftpf, s_flags *flags)
 	else if (ftpf->str[ftpf->pos] == '-')
 	{
 		ftpf->pos++;
-		flags->nb_dash = count_flags(ftpf);
+		nb = count_flags(ftpf);
+		if (nb < 0)
+			nb *= -1;
+		flags->nb_dash = nb;
 	}
 	else if (ftpf->str[ftpf->pos] != '.' && (pf_istype(ftpf->str[ftpf->pos]) == -1))
 	{
