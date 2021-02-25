@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 15:45:54 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 20:22:24 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 20:25:53 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void			ft_put_param(s_varg *ftpf)
 
 	init_s_flags(&flags);
 	ftpf->pos++;
-	printf("preci = %d, dash = %d\n", flags.precision, flags.nb_dash);
+//	printf("preci = %d, dash = %d\n", flags.precision, flags.nb_dash);
 	init_param(ftpf, &flags);
 	print_flags(ftpf, &flags);
 }
