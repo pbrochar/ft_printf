@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 17:06:08 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 19:26:08 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 19:39:02 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void		pf_print_precision(s_varg *ftpf, s_flags *flags)
 	va_copy(cpy, *(ftpf->lst));
 	nb = 0;
 	u_nb = 0;
-	if ((flags->type == 'd' || flags->type == 'i' || flags->type == 'x' || flags->type == 'X'))
+	if (ft_strchr("idxX", flags->type))
 	{
 		nb = va_arg(cpy, int);
 		if (nb < 0 && (flags->type == 'i' || flags->type == 'd'))

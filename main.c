@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 15:26:26 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 19:28:14 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 19:43:56 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int main(void)
 {
 
 
-	printf("print pf: %d ==> ", printf("|%*d|\n", 5, 42));
-	printf("print ft: %d ==> ", ft_printf("|%*d|\n", 5, 42));
+	printf("print pf: %d ==> ", printf("|%--194.54X|\n", 3852169892u));
+	printf("print ft: %d ==> ", ft_printf("|%--194.54X|\n", 3852169892u));
 //	printf("%s\n", NULL);
 
 	return (0);

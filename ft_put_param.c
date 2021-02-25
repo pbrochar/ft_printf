@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 15:45:54 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 19:30:00 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 19:43:41 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int		count_flags(s_varg *ftpf)
 		ftpf->pos++;
 	if (ft_isdigit(ftpf->str[ftpf->pos]) || ftpf->str[ftpf->pos] == '-')
 	{
+		while (ftpf->str[ftpf->pos + 1] == '-')
+			ftpf->pos++;
 		nb = ft_atoi(&(ftpf->str[ftpf->pos]));
 		while (ftpf->str[ftpf->pos] == '-' || ft_isdigit(ftpf->str[ftpf->pos]))
 			ftpf->pos++;
