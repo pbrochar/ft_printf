@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 15:26:26 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 16:00:44 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 17:18:51 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int main(void)
 {
 
 
-	printf("|%-010d|\n", 0);
-//	ft_printf("%s\n", NULL);
+	//printf("|%-010d|\n", 0);
+	ft_printf("%0-10s\n", NULL);
 //	printf("%s\n", NULL);
 
 	return (0);

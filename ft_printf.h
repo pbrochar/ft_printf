@@ -57,4 +57,6 @@ void	ft_put_param(s_varg *ftpf);
 void	print_zero(s_varg *test);
 int		nb_len_dec(int n);
 int		nb_len_hex(int n);
+int		check_fct(s_varg *ftpf);
+int		count_flags(s_varg *ftpf);
 #endif

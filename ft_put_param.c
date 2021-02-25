@@ -6,14 +6,14 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 15:45:54 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 14:58:18 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 17:02:19 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
 
-static int		count_flags(s_varg *ftpf)
+int		count_flags(s_varg *ftpf)
 {
 	int nb;
 
