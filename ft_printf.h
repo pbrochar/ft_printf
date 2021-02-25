@@ -38,8 +38,9 @@ void	init_s_varg(s_varg *ftpf, const char *format, va_list *parameters);
 void	init_s_flags(s_flags *flags);
 int		pf_istype(char c);
 int		pf_isflag(char c);
-int		nb_len_addr(s_varg *ftpf);
+int		nb_len_addr(void *ptr);
 int		nb_len_unsigned(unsigned int nb);
+int		nb_len_str(char *);
 void	print_arg(s_varg *ftpf, s_flags *flags);
 void	print_flags(s_varg *ftpf, s_flags *flags);
 

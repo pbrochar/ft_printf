@@ -6,12 +6,20 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 20:43:32 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/24 20:45:49 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 13:22:02 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
+
+int			nb_len_str(char *str)
+{
+	if (!str)
+		return (6);
+	else
+		return (ft_strlen(str));
+}
 
 int			nb_len_dec(int n)
 {
@@ -48,19 +56,15 @@ int			nb_len_hex(int n)
 	return (count);
 }
 
-int			nb_len_addr(s_varg *ftpf)
+int			nb_len_addr(void *ptr)
 {
 	size_t	b;
 	int		i;
 	int		nb;
-	void	*ptr;
-	va_list	cpy;
 
 	nb = 0;
-	va_copy(cpy, *(ftpf->lst));
-	ptr = va_arg(*(ftpf->lst), void *);
 	if (!ptr)
-		return (5);
+		return (3);
 	b = (size_t)ptr;
 	i = (sizeof(b) << 3) - 4;
 	while (((b >> i) & 0xf) == 0)

@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 17:06:08 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/24 20:37:45 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 14:21:45 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	pf_calcul_total(s_flags *flags, int flag_type)
 		|| flags->type == 'i' || flags->type == 'x'
 		|| flags->type == 'X' || flags->type == 'u'))
 		total -= (flags->precision - flags->len);
-	if (flags->len > flags->precision && flags->type == 's')
+	if (flags->precision > -1 && flags->len > flags->precision && flags->type == 's')
 		total += (flags->len - flags->precision);
 	return (total);
 }
@@ -31,7 +31,6 @@ void		pf_print_zero(s_varg *ftpf, s_flags *flags)
 {
 	int		total;
 	va_list cpy;
-
 	va_copy(cpy, *(ftpf->lst));
 	total = (flags->nb_zero) - (flags->len);
 	if (flags->precision > -1)
