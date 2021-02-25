@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 20:43:32 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 13:22:02 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 15:27:55 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int			nb_len_dec(int n)
 	int				i;
 
 	i = 0;
+	if (n == 0)
+		return (1);
 	if (n < 0)
 		nb = -n;
 	else
@@ -44,6 +46,8 @@ int			nb_len_hex(int n)
 	int i;
 	int count;
 
+	if (n == 0)
+		return (1);
 	count = 0;
 	i = (sizeof(n) << 3) - 4;
 	while (((n >> i) & 0xf) == 0)
@@ -84,6 +88,8 @@ int			nb_len_unsigned(unsigned int nb)
 
 	unsign_max = 4294967295;
 	i = 0;
+	if (nb == 0)
+		return (1);
 	if (nb < 0)
 		nb = nb + unsign_max + 1;
 	while (nb > 0)

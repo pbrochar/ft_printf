@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 11:28:10 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 13:14:49 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 15:46:56 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,13 @@ void		ft_puthex_min(s_varg *ftpf)
 	int nb;
 
 	nb = va_arg(*(ftpf->lst), int);
+	if (ftpf->indicator == -2)
+		return ;
+	if (nb == 0)
+	{
+		ft_printhex(0, 0, &ftpf->nb_print);
+		return ;
+	}
 	i = (sizeof(nb) << 3) - 4;
 	while (((nb >> i) & 0xf) == 0)
 		i -= 4;
@@ -72,6 +79,13 @@ void		ft_puthex_maj(s_varg *ftpf)
 	int nb;
 
 	nb = va_arg(*(ftpf->lst), int);
+	if (ftpf->indicator == -2)
+		return ;
+	if (nb == 0)
+	{
+		ft_printhex(0, 1, &ftpf->nb_print);
+		return ;
+	}
 	i = (sizeof(nb) << 3) - 4;
 	while (((nb >> i) & 0xf) == 0)
 		i -= 4;

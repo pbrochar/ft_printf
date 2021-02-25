@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 16:26:40 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/24 20:41:28 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 15:43:43 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void		ft_putunsigned(s_varg *ftpf)
 
 	nb = va_arg(*(ftpf->lst), unsigned int);
 	unsign_max = 4294967295;
+	if (nb == 0 && ftpf->indicator == -2)
+		return ;
 	if (nb < 0)
 		nb = nb + unsign_max + 1;
 	ft_printunsigned(nb, &ftpf->nb_print);

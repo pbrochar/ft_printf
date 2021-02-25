@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 17:27:52 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 14:06:59 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 15:46:26 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void		ft_putnbr_pf(int n, size_t *i, int indicator)
 {
 	unsigned int nbr;
 
+	if (indicator == -2)
+		return ;
 	if (n < 0)
 	{
 		nbr = -n;

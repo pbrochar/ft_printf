@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 17:06:08 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 14:21:45 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 15:44:10 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	pf_calcul_total(s_flags *flags, int flag_type)
 	int total;
 
 	total = flag_type - flags->len;
-	if (flags->len < flags->precision && (flags->type == 'd'
+	if (flags->precision > -1 && flags->len < flags->precision && (flags->type == 'd'
 		|| flags->type == 'i' || flags->type == 'x'
 		|| flags->type == 'X' || flags->type == 'u'))
 		total -= (flags->precision - flags->len);
@@ -82,11 +82,34 @@ void		pf_print_dash(s_varg *ftpf, s_flags *flags)
 
 void		pf_print_precision(s_varg *ftpf, s_flags *flags)
 {
-	if ((flags->type == 'd' || flags->type == 'i' || flags->type == 'u'
-		|| flags->type == 'x' || flags->type == 'X')
-		&& (flags->precision > flags->len))
+	va_list			cpy;
+	unsigned int	u_nb;
+	int				nb;
+
+	va_copy(cpy, *(ftpf->lst));
+	nb = 0;
+	u_nb = 0;
+	if ((flags->type == 'd' || flags->type == 'i' || flags->type == 'x' || flags->type == 'X'))
+	{
+		nb = va_arg(cpy, int);
+		if (nb < 0 && (flags->type == 'i' || flags->type == 'd'))
+		{
+			ft_putchar_pf('-', &ftpf->nb_print);
+			ftpf->indicator = 0;
+		}
+		if (nb == 0 && flags->precision == 0)
+			ftpf->indicator = -2;
 		while ((flags->precision)-- > flags->len)
 			ft_putchar_pf('0', &ftpf->nb_print);
-	if (flags->type == 's' && (flags->precision < flags->len))
+	}
+	else if (flags->type == 'u')
+	{
+		u_nb = va_arg(cpy, unsigned int);
+		if (nb == 0 && flags->precision == 0)
+			ftpf->indicator = -2;
+		while ((flags->precision)-- > flags->len)
+			ft_putchar_pf('0', &ftpf->nb_print);
+	}
+	else if (flags->type == 's' && (flags->precision <= flags->len))
 		ftpf->indicator = flags->precision;
 }

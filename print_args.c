@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 15:58:51 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 14:11:09 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 15:35:54 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ static void		len_count(s_varg *ftpf, s_flags *flags)
 	va_list cpy;
 
 	va_copy(cpy, *(ftpf->lst));
+	if (flags->precision == 0)
+	{
+		flags->len = 0;
+		return ;
+	}
 	if (flags->type == 'd' || flags->type == 'i')
 		flags->len = nb_len_dec(va_arg(cpy, int));
 	else if (flags->type == 'x' || flags->type == 'X')
@@ -52,7 +57,7 @@ void			print_flags(s_varg *ftpf, s_flags *flags)
 
 	len_count(ftpf, flags);
 	tab_flag = check_flags(flags);
-	if (tab_flag == 0)
+	if (tab_flag == 0 && flags->type != 'c')
 		pf_print_precision(ftpf, flags);
 	fct_flags[tab_flag](ftpf, flags);
 	ftpf->indicator = -1;
@@ -64,6 +69,6 @@ void			print_arg(s_varg *ftpf, s_flags *flags)
 	{&ft_puthex_min, &ft_puthex_maj, &ft_putaddr,
 		&ft_putid, &ft_putid, &ft_putstring,
 		&ft_putcharac, &ft_putpct, &ft_putunsigned};
-
+	
 	fct_param[flags->eq_type](ftpf);
 }
