@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 15:58:51 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 18:39:38 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 18:57:00 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,37 @@ static int		check_flags(s_flags *flags)
 	else
 		return (0);
 }
+static int		check_precision(s_varg *ftpf, s_flags *flags)
+{
+	va_list cpy;
 
+	va_copy(cpy, *(ftpf->lst));
+	if (ft_strchr("idxX", flags->type))
+	{
+		if (va_arg(cpy, int) == 0)
+			return (-1);
+	}
+	else if (flags->type == 'u')
+	{
+		if (va_arg(cpy, unsigned int) == 0)
+			return (-1);
+	}
+	else if (flags->type == 's')
+	{
+		return (-1);
+	}
+	return (0);
+}
 static void		len_count(s_varg *ftpf, s_flags *flags)
 {
 	va_list cpy;
 
 	va_copy(cpy, *(ftpf->lst));
-	/*if (flags->precision == 0)
+	if (flags->precision == 0 && check_precision(ftpf, flags) == -1)
 	{
 		flags->len = 0;
 		return ;
-	}*/
+	}
 	if (flags->type == 'd' || flags->type == 'i')
 		flags->len = nb_len_dec(va_arg(cpy, int));
 	else if (flags->type == 'x' || flags->type == 'X')
