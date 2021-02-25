@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 15:45:54 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 19:43:41 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 20:17:26 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,8 @@ static void		init_param(s_varg *ftpf, s_flags *flags)
 
 	if (ftpf->str[ftpf->pos] == '0')
 		flags->nb_zero = count_flags(ftpf);
-	else if (ft_strchr("-*", ftpf->str[ftpf->pos]) || ft_isdigit(ftpf->str[ftpf->pos]))
+	else if (ftpf->str[ftpf->pos] == '-' || ft_isdigit(ftpf->str[ftpf->pos]))
 	{
-		(ftpf->pos)--;
 		nb = count_flags(ftpf);
 		if (nb < 0)
 			flags->nb_dash = nb * -1;
@@ -66,6 +65,7 @@ void			ft_put_param(s_varg *ftpf)
 
 	init_s_flags(&flags);
 	ftpf->pos++;
+	printf("preci = %d, dash = %d\n", flags.precision, flags.nb_dash);
 	init_param(ftpf, &flags);
 	print_flags(ftpf, &flags);
 }
