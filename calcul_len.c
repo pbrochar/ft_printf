@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 20:43:32 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 19:47:57 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 19:49:07 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int			nb_len_addr(void *ptr)
 
 	nb = 0;
 	if (!ptr)
-		return (2);
+		return (3);
 	b = (size_t)ptr;
 	i = (sizeof(b) << 3) - 4;
 	while (((b >> i) & 0xf) == 0)
