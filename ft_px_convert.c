@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   px_convert.c                                       :+:      :+:    :+:   */
+/*   ft_px_convert.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 11:28:10 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 15:46:56 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 19:46:30 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void		ft_putaddr(s_varg *ftpf)
 	ptr = va_arg(*(ftpf->lst), void *);
 	if (ptr == NULL)
 	{
-		ft_putstr_pf("0x0", &ftpf->nb_print);
+		ft_putstr_pf("0x", &ftpf->nb_print);
 		return ;
 	}
 	b = (size_t)ptr;
