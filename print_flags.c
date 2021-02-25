@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 17:06:08 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 15:44:10 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 18:37:46 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ static int	pf_calcul_total(s_flags *flags, int flag_type)
 	int total;
 
 	total = flag_type - flags->len;
-	if (flags->precision > -1 && flags->len < flags->precision && (flags->type == 'd'
-		|| flags->type == 'i' || flags->type == 'x'
-		|| flags->type == 'X' || flags->type == 'u'))
+	if (flags->precision > -1 && flags->len < flags->precision && ft_strchr("iduxX", flags->type))
 		total -= (flags->precision - flags->len);
 	if (flags->precision > -1 && flags->len > flags->precision && flags->type == 's')
 		total += (flags->len - flags->precision);

@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 15:58:51 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 18:16:38 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/25 18:39:38 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ static void		len_count(s_varg *ftpf, s_flags *flags)
 	va_list cpy;
 
 	va_copy(cpy, *(ftpf->lst));
-	if (flags->precision == 0)
+	/*if (flags->precision == 0)
 	{
 		flags->len = 0;
 		return ;
-	}
+	}*/
 	if (flags->type == 'd' || flags->type == 'i')
 		flags->len = nb_len_dec(va_arg(cpy, int));
 	else if (flags->type == 'x' || flags->type == 'X')
