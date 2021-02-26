@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 15:45:54 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/26 14:48:28 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/26 14:50:01 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,11 +119,11 @@ void			ft_put_param(s_varg *ftpf)
 	init_s_flags(&flags);
 	ftpf->pos++;
 	init_param(ftpf, &flags);
-
+/*
 	printf("zero = %d\n", flags.nb_zero);
 	printf("dash = %d\n", flags.nb_dash);
 	printf("space = %d\n", flags.nb_space);
 	printf("precision = %d\n", flags.precision);
-	printf("type = %c\n", flags.type);
+	printf("type = %c\n", flags.type);*/
 	print_flags(ftpf, &flags);
 }
