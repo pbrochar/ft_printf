@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 15:45:54 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/26 14:37:25 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/26 14:48:28 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void		init_param(s_varg *ftpf, s_flags *flags)
 		if (nb < 0)
 			flags->nb_dash = -nb;
 		else
-			flags->nb_zero = count_flags(ftpf);
+			flags->nb_zero = nb;
 	}
 	if (ftpf->str[ftpf->pos] == '-')
 	{
@@ -54,7 +54,7 @@ static void		init_param(s_varg *ftpf, s_flags *flags)
 		flags->nb_dash = count_flags(ftpf);
 		flags->nb_zero = -1;
 	}
-	if (ftpf->str[ftpf->pos] != '.' && (pf_istype(ftpf->str[ftpf->pos]) == -1))
+	else if (ftpf->str[ftpf->pos] != '.' && (pf_istype(ftpf->str[ftpf->pos]) == -1))
 	{
 		nb = count_flags(ftpf);
 		if (nb < 0)
@@ -119,11 +119,11 @@ void			ft_put_param(s_varg *ftpf)
 	init_s_flags(&flags);
 	ftpf->pos++;
 	init_param(ftpf, &flags);
-/*
+
 	printf("zero = %d\n", flags.nb_zero);
 	printf("dash = %d\n", flags.nb_dash);
 	printf("space = %d\n", flags.nb_space);
 	printf("precision = %d\n", flags.precision);
-	printf("type = %c\n", flags.type);*/
+	printf("type = %c\n", flags.type);
 	print_flags(ftpf, &flags);
 }
