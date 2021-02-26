@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 15:45:54 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/26 14:50:01 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/26 15:24:36 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ static void		init_param(s_varg *ftpf, s_flags *flags)
 	{
 		while (ftpf->str[ftpf->pos] == '-')
 			ftpf->pos++;
-		flags->nb_dash = count_flags(ftpf);
+		nb = count_flags(ftpf);
+		if (nb < 0)
+			nb = -nb;
+		flags->nb_dash = nb;
 		flags->nb_zero = -1;
 	}
 	else if (ftpf->str[ftpf->pos] != '.' && (pf_istype(ftpf->str[ftpf->pos]) == -1))
