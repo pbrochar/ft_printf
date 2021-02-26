@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 15:45:54 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/26 13:02:01 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/26 14:27:13 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ int		count_flags(s_varg *ftpf)
 	int nb;
 
 	nb = 0;
-	while (ftpf->str[ftpf->pos] == '0' || (ftpf->str[ftpf->pos] == '-'))
-		ftpf->pos++;
 	if (ftpf->str[ftpf->pos] == '*')
 	{
 		nb = va_arg(*(ftpf->lst), int);
@@ -35,12 +33,56 @@ int		count_flags(s_varg *ftpf)
 	}
 	return (0);
 }
-
 static void		init_param(s_varg *ftpf, s_flags *flags)
 {
 	int nb;
 
 	if (ftpf->str[ftpf->pos] == '0')
+	{
+		while (ftpf->str[ftpf->pos] == '0')
+			ftpf->pos++;
+		flags->nb_zero = count_flags(ftpf);
+	}
+	if (ftpf->str[ftpf->pos] == '-')
+	{
+		while (ftpf->str[ftpf->pos] == '-')
+			ftpf->pos++;
+		flags->nb_dash = count_flags(ftpf);
+		flags->nb_zero = -1;
+	}
+	if (ftpf->str[ftpf->pos] != '.' && (pf_istype(ftpf->str[ftpf->pos]) == -1))
+	{
+		nb = count_flags(ftpf);
+		if (nb < 0)
+			flags->nb_dash = -nb;
+		else
+			flags->nb_space = nb;
+	}
+	if (ftpf->str[ftpf->pos] == '.')
+	{
+		ftpf->pos++;
+		flags->precision = count_flags(ftpf);
+	}
+	flags->eq_type = pf_istype(ftpf->str[ftpf->pos]);
+	flags->type = ftpf->str[ftpf->pos];
+}
+/*
+static void		init_param(s_varg *ftpf, s_flags *flags)
+{
+	int nb;
+
+		ftpf->pos++;
+
+
+	if (ftpf->str[ftpf->pos] == '-' || (ftpf->str[ftpf->pos] == '0' && ftpf->str[ftpf->pos + 1] == '-'))
+	{
+		ftpf->pos++;
+		nb = count_flags(ftpf);
+		if (nb < 0)
+			nb *= -1;
+		flags->nb_dash = nb;
+	}
+	else if (ftpf->str[ftpf->pos] == '0')
 	{
 		ftpf->pos++;
 		nb = count_flags(ftpf);
@@ -48,14 +90,6 @@ static void		init_param(s_varg *ftpf, s_flags *flags)
 			flags->nb_zero = nb * -1;
 		else
 			flags->nb_dash = nb;
-	}
-	else if (ftpf->str[ftpf->pos] == '-')
-	{
-		ftpf->pos++;
-		nb = count_flags(ftpf);
-		if (nb < 0)
-			nb *= -1;
-		flags->nb_dash = nb;
 	}
 	else if (ftpf->str[ftpf->pos] != '.' && (pf_istype(ftpf->str[ftpf->pos]) == -1))
 	{
@@ -73,7 +107,7 @@ static void		init_param(s_varg *ftpf, s_flags *flags)
 	flags->eq_type = pf_istype(ftpf->str[ftpf->pos]);
 	flags->type = ftpf->str[ftpf->pos];
 }
-
+*/
 void			ft_put_param(s_varg *ftpf)
 {
 	s_flags	flags;
@@ -81,11 +115,11 @@ void			ft_put_param(s_varg *ftpf)
 	init_s_flags(&flags);
 	ftpf->pos++;
 	init_param(ftpf, &flags);
-/*
+
 	printf("zero = %d\n", flags.nb_zero);
 	printf("dash = %d\n", flags.nb_dash);
 	printf("space = %d\n", flags.nb_space);
 	printf("precision = %d\n", flags.precision);
-	printf("type = %c\n", flags.type);*/
+	printf("type = %c\n", flags.type);
 	print_flags(ftpf, &flags);
 }
