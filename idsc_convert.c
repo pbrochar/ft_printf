@@ -6,19 +6,19 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 14:48:42 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 15:46:18 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/26 15:59:42 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
 
-void	ft_putid(s_varg *ftpf)
+void	ft_putid(t_varg *ftpf)
 {
 	ft_putnbr_pf(va_arg(*(ftpf->lst), int), &ftpf->nb_print, ftpf->indicator);
 }
 
-void	ft_putstring(s_varg *ftpf)
+void	ft_putstring(t_varg *ftpf)
 {
 	char	*str;
 	char	*null;
@@ -45,12 +45,12 @@ void	ft_putstring(s_varg *ftpf)
 	ft_putstr_pf(str, &ftpf->nb_print);
 }
 
-void	ft_putcharac(s_varg *ftpf)
+void	ft_putcharac(t_varg *ftpf)
 {
 	ft_putchar_pf(va_arg(*(ftpf->lst), int), &ftpf->nb_print);
 }
 
-void	ft_putpct(s_varg *ftpf)
+void	ft_putpct(t_varg *ftpf)
 {
 	ft_putchar_pf('%', &ftpf->nb_print);
 }

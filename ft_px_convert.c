@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 11:28:10 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 19:54:22 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/26 15:59:25 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	ft_printhex(int v, int upper, size_t *i)
 	}
 }
 
-void		ft_putaddr(s_varg *ftpf)
+void		ft_putaddr(t_varg *ftpf)
 {
 	size_t	b;
 	int		i;
@@ -53,7 +53,7 @@ void		ft_putaddr(s_varg *ftpf)
 	}
 }
 
-void		ft_puthex_min(s_varg *ftpf)
+void		ft_puthex_min(t_varg *ftpf)
 {
 	int i;
 	int nb;
@@ -76,7 +76,7 @@ void		ft_puthex_min(s_varg *ftpf)
 	}
 }
 
-void		ft_puthex_maj(s_varg *ftpf)
+void		ft_puthex_maj(t_varg *ftpf)
 {
 	int i;
 	int nb;

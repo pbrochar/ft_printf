@@ -6,14 +6,14 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 15:45:54 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/26 15:24:36 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/26 16:02:50 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
 
-int		count_flags(s_varg *ftpf)
+int		count_flags(t_varg *ftpf)
 {
 	int nb;
 
@@ -33,7 +33,7 @@ int		count_flags(s_varg *ftpf)
 	}
 	return (0);
 }
-static void		init_param(s_varg *ftpf, s_flags *flags)
+static void		init_param(t_varg *ftpf, t_flags *flags)
 {
 	int nb;
 
@@ -74,7 +74,7 @@ static void		init_param(s_varg *ftpf, s_flags *flags)
 	flags->type = ftpf->str[ftpf->pos];
 }
 /*
-static void		init_param(s_varg *ftpf, s_flags *flags)
+static void		init_param(t_varg *ftpf, t_flags *flags)
 {
 	int nb;
 
@@ -115,9 +115,9 @@ static void		init_param(s_varg *ftpf, s_flags *flags)
 	flags->type = ftpf->str[ftpf->pos];
 }
 */
-void			ft_put_param(s_varg *ftpf)
+void			ft_put_param(t_varg *ftpf)
 {
-	s_flags	flags;
+	t_flags	flags;
 
 	init_s_flags(&flags);
 	ftpf->pos++;

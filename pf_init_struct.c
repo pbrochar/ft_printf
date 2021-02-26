@@ -6,14 +6,14 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 17:00:30 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 12:41:39 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/26 16:00:32 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
 
-void	init_s_varg(s_varg *ftpf, const char *format, va_list *parameters)
+void	init_s_varg(t_varg *ftpf, const char *format, va_list *parameters)
 {
 	ftpf->str = format;
 	ftpf->pos = 0;
@@ -22,7 +22,7 @@ void	init_s_varg(s_varg *ftpf, const char *format, va_list *parameters)
 	ftpf->indicator = -1;
 }
 
-void	init_s_flags(s_flags *flags)
+void	init_s_flags(t_flags *flags)
 {
 	flags->nb_zero = -1;
 	flags->nb_dash = -1;

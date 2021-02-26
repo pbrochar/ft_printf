@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 16:26:40 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 15:43:43 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/26 16:01:33 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	ft_printunsigned(unsigned int nb, size_t *i)
 		ft_putchar_pf((nb % 10) + '0', i);
 }
 
-void		ft_putunsigned(s_varg *ftpf)
+void		ft_putunsigned(t_varg *ftpf)
 {
 	unsigned int nb;
 	unsigned int unsign_max;

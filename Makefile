@@ -1,4 +1,4 @@
-SRC = main.c check_fct.c pf_init_struct.c parser.c ft_put_param.c utils.c ft_printf.c idsc_convert.c ft_px_convert.c u_convert.c print_args.c print_flags.c calcul_len.c
+SRC = main.c pf_init_struct.c parser.c ft_put_param.c utils.c ft_printf.c idsc_convert.c ft_px_convert.c u_convert.c print_args.c print_flags.c calcul_len.c
 LIB = libft.a
 FLAGS = -Wall -Wextra -Werror
 CC = clang

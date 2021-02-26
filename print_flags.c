@@ -6,14 +6,14 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 17:06:08 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 20:07:05 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/26 16:01:15 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
 
-static int	pf_calcul_total(s_flags *flags, int flag_type)
+static int	pf_calcul_total(t_flags *flags, int flag_type)
 {
 	int total;
 
@@ -25,7 +25,7 @@ static int	pf_calcul_total(s_flags *flags, int flag_type)
 	return (total);
 }
 
-void		pf_print_zero(s_varg *ftpf, s_flags *flags)
+void		pf_print_zero(t_varg *ftpf, t_flags *flags)
 {
 	int		total;
 	va_list cpy;
@@ -48,7 +48,7 @@ void		pf_print_zero(s_varg *ftpf, s_flags *flags)
 	print_arg(ftpf, flags);
 }
 
-void		pf_print_space(s_varg *ftpf, s_flags *flags)
+void		pf_print_space(t_varg *ftpf, t_flags *flags)
 {
 	int		total;
 	va_list	cpy;
@@ -63,7 +63,7 @@ void		pf_print_space(s_varg *ftpf, s_flags *flags)
 	print_arg(ftpf, flags);
 }
 
-void		pf_print_dash(s_varg *ftpf, s_flags *flags)
+void		pf_print_dash(t_varg *ftpf, t_flags *flags)
 {
 	int		total;
 	va_list	cpy;
@@ -78,7 +78,7 @@ void		pf_print_dash(s_varg *ftpf, s_flags *flags)
 		ft_putchar_pf(' ', &ftpf->nb_print);
 }
 
-void		pf_print_precision(s_varg *ftpf, s_flags *flags)
+void		pf_print_precision(t_varg *ftpf, t_flags *flags)
 {
 	va_list			cpy;
 	unsigned int	u_nb;
