@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 14:11:45 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/28 13:14:04 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/28 13:19:41 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include "../libft.h"
 
-# define BUFFER_SIZE 4096 
+# define BUFFER_SIZE 4096
 
 typedef struct	s_gnl
 {

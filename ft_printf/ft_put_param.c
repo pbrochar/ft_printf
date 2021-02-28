@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 15:45:54 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/28 12:02:00 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/28 13:19:07 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ static void		pf_isdash(t_varg *ftpf, t_flags *flags)
 	flags->nb_dash = nb;
 	flags->nb_zero = -1;
 }
-
 
 static void		init_param(t_varg *ftpf, t_flags *flags)
 {
