@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 14:48:42 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/26 15:59:42 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/26 16:36:30 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_putstring(t_varg *ftpf)
 	i = 0;
 	null = "(null)";
 	str = va_arg(*(ftpf->lst), char *);
-	if (ftpf->indicator > -1  && str)
+	if (ftpf->indicator > -1 && str)
 	{
 		while ((ftpf->indicator)-- > 0)
 			ft_putchar_pf(str[i++], &ftpf->nb_print);

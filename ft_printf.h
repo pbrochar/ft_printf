@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 15:52:46 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/26 16:09:59 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/28 11:36:48 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void			ft_put_param(t_varg *ftpf);
 void			print_zero(t_varg *test);
 int				nb_len_dec(int n);
 int				nb_len_hex(int n);
-int				check_fct(t_varg *ftpf);
-int				count_flags(t_varg *ftpf);
+
+void			int_precision(t_varg *ftpf, t_flags *flags);
+void			unsigned_precision(t_varg *ftpf, t_flags *flags);
+
 #endif

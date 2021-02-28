@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 11:28:10 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/26 15:59:25 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/26 16:36:01 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void		ft_putaddr(t_varg *ftpf)
 	{
 		if (ftpf->indicator == -2)
 			ft_putstr_pf("0x", &ftpf->nb_print);
-		else 
+		else
 			ft_putstr_pf("0x0", &ftpf->nb_print);
 		return ;
 	}

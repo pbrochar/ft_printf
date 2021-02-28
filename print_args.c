@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 15:58:51 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/26 16:00:55 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/26 16:35:05 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static int		check_flags(t_flags *flags)
 	else
 		return (0);
 }
+
 static int		check_precision(t_varg *ftpf, t_flags *flags)
 {
 	va_list cpy;
@@ -45,6 +46,7 @@ static int		check_precision(t_varg *ftpf, t_flags *flags)
 	}
 	return (0);
 }
+
 static void		len_count(t_varg *ftpf, t_flags *flags)
 {
 	va_list cpy;
@@ -76,8 +78,8 @@ static void		len_count(t_varg *ftpf, t_flags *flags)
 
 void			print_flags(t_varg *ftpf, t_flags *flags)
 {
-	int		tab_flag;
-	void	(*fct_flags[4])(t_varg *, t_flags *) =
+	int			tab_flag;
+	static void	(*fct_flags[4])(t_varg *, t_flags *) = \
 	{&print_arg, &pf_print_zero, &pf_print_space, &pf_print_dash};
 
 	len_count(ftpf, flags);
@@ -90,10 +92,10 @@ void			print_flags(t_varg *ftpf, t_flags *flags)
 
 void			print_arg(t_varg *ftpf, t_flags *flags)
 {
-	void (*fct_param[9])(t_varg *) =
+	static void (*fct_param[9])(t_varg *) = \
 	{&ft_puthex_min, &ft_puthex_maj, &ft_putaddr,
-		&ft_putid, &ft_putid, &ft_putstring,
-		&ft_putcharac, &ft_putpct, &ft_putunsigned};
-	
+	&ft_putid, &ft_putid, &ft_putstring, &ft_putcharac,
+	&ft_putpct, &ft_putunsigned};
+
 	fct_param[flags->eq_type](ftpf);
 }
