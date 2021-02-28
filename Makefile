@@ -25,11 +25,8 @@ $(NAME) : $(OBJ)
 
 all : $(NAME)
 
-bonus : $(NAME) $(OBJBON) $(OBJ)
-	ar -crs $(NAME) $(OBJBON) $(OBJ)
-
 clean :
-	rm -f $(OBJ) $(OBJBON)
+	rm -f $(OBJ)
 	rm -f libft.h.gch
 
 fclean : clean
