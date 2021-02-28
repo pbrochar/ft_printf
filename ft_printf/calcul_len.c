@@ -6,11 +6,11 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 20:43:32 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/25 19:49:07 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/28 11:59:43 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 #include "ft_printf.h"
 
 int			nb_len_str(char *str)

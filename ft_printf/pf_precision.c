@@ -6,11 +6,11 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 11:29:19 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/28 11:39:27 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/28 12:02:35 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 #include "ft_printf.h"
 
 void	int_precision(t_varg *ftpf, t_flags *flags)

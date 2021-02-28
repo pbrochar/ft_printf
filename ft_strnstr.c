@@ -1,46 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/16 11:41:22 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/24 20:27:34 by pbrochar         ###   ########.fr       */
+/*   Created: 2020/11/18 19:12:15 by pbrochar          #+#    #+#             */
+/*   Updated: 2020/11/21 18:13:07 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "ft_printf.h"
 
-int	pf_istype(char c)
+char	*ft_strnstr(const char *hay, const char *need, size_t len)
 {
-	int		i;
-	char	*type;
+	size_t i;
+	size_t j;
 
-	type = "xXpdisc%u";
 	i = 0;
-	while (type[i])
+	if (!need[i] || !need)
+		return ((char *)hay);
+	while (hay[i] && i < len)
 	{
-		if (type[i] == c)
-			return (i);
+		j = 0;
+		while (j + i < len && need[j] == hay[i + j])
+		{
+			if (!need[j + 1])
+				return ((char *)hay + i);
+			j++;
+		}
 		i++;
 	}
-	return (-1);
-}
-
-int	pf_isflag(char c)
-{
-	int		i;
-	char	*flag;
-
-	flag = "0";
-	i = 0;
-	while (flag[i])
-	{
-		if (flag[i] == c)
-			return (i);
-		i++;
-	}
-	return (-1);
+	return (NULL);
 }

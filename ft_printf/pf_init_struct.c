@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   pf_init_struct.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/23 15:16:06 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/26 16:04:45 by pbrochar         ###   ########.fr       */
+/*   Created: 2021/02/23 17:00:30 by pbrochar          #+#    #+#             */
+/*   Updated: 2021/02/28 12:02:28 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 #include "ft_printf.h"
 
-int			ft_printf(const char *format, ...)
+void	init_s_varg(t_varg *ftpf, const char *format, va_list *parameters)
 {
-	va_list parameters;
-	t_varg	ftpf;
+	ftpf->str = format;
+	ftpf->pos = 0;
+	ftpf->lst = parameters;
+	ftpf->nb_print = 0;
+	ftpf->indicator = -1;
+}
 
-	va_start(parameters, format);
-	init_s_varg(&ftpf, format, &parameters);
-	while (format[ftpf.pos])
-	{
-		if (format[ftpf.pos] != '%')
-			ft_putchar_pf(format[ftpf.pos], &ftpf.nb_print);
-		else
-			ft_put_param(&ftpf);
-		ftpf.pos++;
-	}
-	va_end(parameters);
-	return (ftpf.nb_print);
+void	init_s_flags(t_flags *flags)
+{
+	flags->nb_zero = -1;
+	flags->nb_dash = -1;
+	flags->nb_space = -1;
+	flags->precision = -1;
+	flags->len = -1;
+	flags->eq_type = -1;
+	flags->type = '\0';
 }

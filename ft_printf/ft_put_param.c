@@ -6,11 +6,11 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 15:45:54 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/28 11:46:09 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/28 12:02:00 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 #include "ft_printf.h"
 
 static int		count_flags(t_varg *ftpf)

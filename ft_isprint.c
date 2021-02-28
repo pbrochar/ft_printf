@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_init_struct.c                                   :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/23 17:00:30 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/26 16:00:32 by pbrochar         ###   ########.fr       */
+/*   Created: 2020/11/18 19:09:16 by pbrochar          #+#    #+#             */
+/*   Updated: 2020/11/18 19:09:22 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "ft_printf.h"
 
-void	init_s_varg(t_varg *ftpf, const char *format, va_list *parameters)
+int	ft_isprint(int c)
 {
-	ftpf->str = format;
-	ftpf->pos = 0;
-	ftpf->lst = parameters;
-	ftpf->nb_print = 0;
-	ftpf->indicator = -1;
-}
-
-void	init_s_flags(t_flags *flags)
-{
-	flags->nb_zero = -1;
-	flags->nb_dash = -1;
-	flags->nb_space = -1;
-	flags->precision = -1;
-	flags->len = -1;
-	flags->eq_type = -1;
-	flags->type = '\0';
+	if (c > 31 && c < 127)
+		return (16384);
+	return (0);
 }
