@@ -6,11 +6,12 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 12:44:07 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/14 17:05:06 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/28 13:14:37 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "../libft.h"
 
 static int			get_line(t_gnl *gnl, char **line)
 {
