@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 11:29:19 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/28 11:38:14 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/28 11:39:27 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	int_precision(t_varg *ftpf, t_flags *flags)
 void	unsigned_precision(t_varg *ftpf, t_flags *flags)
 {
 	va_list			cpy;
-	unsigned int 	u_nb;
+	unsigned int	u_nb;
 
 	va_copy(cpy, *(ftpf->lst));
 	u_nb = va_arg(cpy, unsigned int);

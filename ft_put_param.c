@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 15:45:54 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/02/26 16:28:25 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/02/28 11:46:09 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,30 +34,41 @@ static int		count_flags(t_varg *ftpf)
 	return (0);
 }
 
+static void		pf_iszero(t_varg *ftpf, t_flags *flags)
+{
+	int nb;
+
+	while (ftpf->str[ftpf->pos] == '0')
+		ftpf->pos++;
+	nb = count_flags(ftpf);
+	if (nb < 0)
+		flags->nb_dash = -nb;
+	else
+		flags->nb_zero = nb;
+}
+
+static void		pf_isdash(t_varg *ftpf, t_flags *flags)
+{
+	int nb;
+
+	while (ftpf->str[ftpf->pos] == '-')
+		ftpf->pos++;
+	nb = count_flags(ftpf);
+	if (nb < 0)
+		nb = -nb;
+	flags->nb_dash = nb;
+	flags->nb_zero = -1;
+}
+
+
 static void		init_param(t_varg *ftpf, t_flags *flags)
 {
 	int nb;
 
 	if (ftpf->str[ftpf->pos] == '0')
-	{
-		while (ftpf->str[ftpf->pos] == '0')
-			ftpf->pos++;
-		nb = count_flags(ftpf);
-		if (nb < 0)
-			flags->nb_dash = -nb;
-		else
-			flags->nb_zero = nb;
-	}
+		pf_iszero(ftpf, flags);
 	if (ftpf->str[ftpf->pos] == '-')
-	{
-		while (ftpf->str[ftpf->pos] == '-')
-			ftpf->pos++;
-		nb = count_flags(ftpf);
-		if (nb < 0)
-			nb = -nb;
-		flags->nb_dash = nb;
-		flags->nb_zero = -1;
-	}
+		pf_isdash(ftpf, flags);
 	else if (ftpf->str[ftpf->pos] != '.' &&
 			(pf_istype(ftpf->str[ftpf->pos]) == -1))
 	{
